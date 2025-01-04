@@ -15,6 +15,13 @@ const scaleControlValueElement = document.querySelector('.scale__control--value'
 const isEscapeKeyPressed = (event) => event.key === 'Escape';
 const getMessageElement = () => document.querySelector('.success, .error');
 
+noUiSlider.create(effectLevelSliderElement, {
+  range: { min: 0, max: 1 },
+  start: 0,
+  step: 0.1,
+  connect: 'lower',
+});
+
 const updateImageScale = (scaleValue) => {
   scaleControlValueElement.value = `${scaleValue}%`;
   uploadPreview.style.transform = `scale(${scaleValue / 100})`;
@@ -97,14 +104,6 @@ const handleImageUpload = () => {
 };
 
 imageInputElement.addEventListener('change', handleImageUpload);
-
-
-noUiSlider.create(effectLevelSliderElement, {
-  range: { min: 0, max: 1 },
-  start: 0,
-  step: 0.1,
-  connect: 'lower',
-});
 
 const showMessageModal = (messageType) => {
   const template = document.querySelector(`#${messageType}`).content;
