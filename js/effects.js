@@ -1,9 +1,11 @@
 import { uploadPreview } from './base-form.js';
 
-const SCALE_MIN = 25;
-const SCALE_MAX = 100;
-const SCALE_STEP = 25;
-const BASE_SCALE = 100;
+const SCALE = {
+  MIN: 25,
+  MAX: 100,
+  STEP: 25,
+  BASE: 100
+};
 
 const EFFECTS = {
   none: { range: { min: 0, max: 1 }, start: 1, step: 0.1, unit: '', filter: '', hideSlider: true },
@@ -79,8 +81,8 @@ effectLevelSlider.noUiSlider.on('update', onEffectLevelUpdate);
 
 const updateScale = (direction) => {
   let currentScale = parseInt(scaleControlValue.value, 10);
-  if ((direction === 'smaller' && currentScale > SCALE_MIN) || (direction === 'bigger' && currentScale < SCALE_MAX)) {
-    currentScale += direction === 'smaller' ? -SCALE_STEP : SCALE_STEP;
+  if ((direction === 'smaller' && currentScale > SCALE.MIN) || (direction === 'bigger' && currentScale < SCALE.MAX)) {
+    currentScale += direction === 'smaller' ? -SCALE.STEP : SCALE.STEP;
     setScale(currentScale);
   }
 };
@@ -88,4 +90,4 @@ const updateScale = (direction) => {
 scaleControlSmaller.addEventListener('click', () => updateScale('smaller'));
 scaleControlBigger.addEventListener('click', () => updateScale('bigger'));
 
-setScale(BASE_SCALE);
+setScale(SCALE.BASE);
