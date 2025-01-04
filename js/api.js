@@ -9,7 +9,7 @@ const sendRequest = (onSuccess, onError, method, body) => {
     {
       method: method,
       body: body,
-    }
+    },
   )
     .then((response) => response.json())
     .then((data) => {
@@ -23,7 +23,7 @@ const sendRequest = (onSuccess, onError, method, body) => {
 const loadData = (onSuccess, onError, method = 'GET') =>
   sendRequest(onSuccess, onError, method);
 
-const uploadData = (onSuccess, onError, method = 'POST', body) =>
+const unloadData = (onSuccess, onError, method = 'POST', body) =>
   sendRequest(onSuccess, onError, method, body);
 
-export { loadData, uploadData };
+export{ loadData, unloadData };
