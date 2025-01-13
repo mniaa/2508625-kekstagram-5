@@ -7,7 +7,7 @@ const bodyElement = document.body;
 const imageInputElement = document.querySelector('.img-upload__input');
 const uploadOverlayElement = document.querySelector('.img-upload__overlay');
 const cancelButtonElement = document.querySelector('.img-upload__cancel');
-export const uploadPreview = document.querySelector('.img-upload__preview img');
+const uploadPreview = document.querySelector('.img-upload__preview img');
 
 const effectLevelSliderElement = document.querySelector('.effect-level__slider');
 const effectLevelContainerElement = document.querySelector('.img-upload__effect-level');
@@ -159,3 +159,5 @@ form.addEventListener('submit', async (event) => {
     submitButtonElement.disabled = false;
   }
 });
+
+export { uploadPreview };
